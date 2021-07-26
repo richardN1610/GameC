@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="homestyle.css">
+    <script src="home.js" defer></script>
+    <title>Home Page</title>
+</head>
+<body>
+    <img src="/home-bg.jpg" class="home-bg">
+    <div class="title">
+         <h1>Welcome To GameC</h1>
+    </div>
+    <div class="main-page">
+        <div class="sign-up">
+            <button class="btn signup-btn">Sign Up</button>
+        </div>
+        <div class="log-in">
+            <a href="/login" class="btn login-btn">Log In</button></a>
+        </div>
+    </div>
+
+    <div class="signup-form" >
+        <span class="form-title">Sign Up</span>
+        <div class="close-btn">
+            <span class="">&#10006</span>
+        </div>
+        <form action="/" method="POST" id="s-form">
+            <div class="form-text">
+                <span>Username</span>
+            </div>
+            <div class="form-input">
+                <input type="text" name="name" id="name" required autocomplete="off">
+            </div>
+            <div class="form-text">
+                <span>Password</span>
+            </div>
+            <div class="form-input">
+                <input type="password" name="password" id="password" required>
+            </div>
+            <div class="form-text">
+                <span>Email</span>
+            </div>
+            <div class="form-input">
+                <input type="email"  id="email" name="email" required autocomplete="off">
+            </div>
+            <div class="submit-btn">
+                <button type="submit" class="form-btn">Submit</button>
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,60 @@
+{
+    "Fighting":[
+        {
+            "id": 1,
+            "imageName": "Tekken7.jpg"
+        },
+        {
+            "id": 2,
+            "imageName": "mk11.jpg"
+        },
+        {
+            "id": 3,
+            "imageName": "SF.jpg"
+        }
+    ],
+    "RPG":[
+        {
+            "id": 4,
+            "imageName": "outriders.jpg"
+        },
+        {
+            "id": 5,
+            "imageName": "witcher.jpg"
+        },
+        {
+            "id": 6,
+            "imageName": "bloodborne.jpg"
+        }
+    ],
+    "FPS":[
+        {
+            "id": 7,
+            "imageName": "valorant.jpg"
+        },
+        {
+            "id": 8,
+            "imageName": "cod.jpg"
+        },
+        {
+            "id": 9,
+            "imageName": "titanfall.jpg"
+        }
+    ],
+    "RACING":[
+        {
+            "id": 10,
+            "imageName": "moto.jpg"
+        },
+        {
+            "id": 11,
+            "imageName": "dirt5.jpg"
+        },
+        {
+            "id": 12,
+            "imageName": "track2.jpg"
+        }
+    ]
+
+
+}

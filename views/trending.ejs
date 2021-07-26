@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/trending.css">
+    <script src="/index.js" defer></script>
+    <script src="/trending.js" defer></script>
+    <title>Trending</title>
+</head>
+
+<body>
+    <nav class="nav-bar">
+        <div class="nav-logo">
+            <img src="/logo.png" class="logo">
+        </div>
+        <a href="#" class="menu-btn">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </a>
+        <ul class="nav-list">
+            <a href="/index"><li>Home</li></a>
+            <a href="/trending"><li>Trending</li></a>
+            <a href="#"><li>Log Out</li></a>
+        </ul>
+    </nav>
+
+    <div class="trending">
+        <div class="category Fighting">ACTION
+            <% items.Fighting.forEach(function(item){ %>
+                <div class="item F" data-item-id="<% item.id %>">
+                    <img src="/images/<%= item.imageName%>" class="preview-img">
+                </div>
+            <% }) %>
+        </div>
+
+        <div class="category RPG">RPG
+            <% items.RPG.forEach(function(item){ %>
+                <div class="item R" data-item-id="<% item.id %>">
+                    <img src="/images/<%= item.imageName%>" class="preview-img">
+                </div>
+            <% }) %>
+        </div>
+
+        <div class="category shooting">FPS
+            <% items.FPS.forEach(function(item){ %>
+                <div class="item FPS" data-item-id="<% item.id %>">
+                    <img src="/images/<%= item.imageName%>" class="preview-img">
+                </div>
+            <% }) %>
+        </div>
+
+        <div class="category Racing">RACING
+            <% items.RACING.forEach(function(item){ %>
+                <div class="item race" data-item-id="<% item.id %>">
+                    <img src="/images/<%= item.imageName%>" class="preview-img">
+                </div>
+            <% }) %>
+        </div>
+
+    </div>
+</body>
+
+</html>
