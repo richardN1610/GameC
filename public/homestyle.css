@@ -3,31 +3,33 @@
     padding: 0;
     box-sizing: border-box;
 }
+html{
+    background-image: url("./home-bg.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
 
 .title{
     position: absolute;
     left: 50%;
-    top: 40%;
+    top: 10%;
     transform: translate(-50%);
 }
 .main-page{
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 20%;
     transform: translate(-50%,-50%);
     display: flex;
 }
 
 h1{
-    color: rgb(250, 213, 144);
+    color:rgb(163, 207, 59);
     font-size: 4em;
+    text-shadow: -4px 2px rgb(29, 70, 1);
 }
-.home-bg{
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-}
-
 .sign-up, .log-in{
     margin-top: 25%;
 }
@@ -49,10 +51,11 @@ h1{
     background: transparent;
     width: 250px;
     height: 90px;
-    color: rgb(255, 216, 143);
+    color:rgb(207, 241, 126);
     border: 3px solid rgb(212, 255, 69);
     box-shadow: -2px 1px rgb(59, 255, 52);
     border-radius: 1em;
+    margin-top: 20%;
 }
 
 .btn:hover{
@@ -66,21 +69,19 @@ input[type="text"], input[type="password"], input[type="email"]{
 }
 .login-form{
     width: 30vw;
-    height: 28vh;
+    height: auto;
 }
 
 .signup-form{
-    width: 40vw;
-    height: 35vh;
+    width: 35vw;
+    height: auto;
 }
 
 .signup-form, .login-form{
     border:2px solid white;
-    background-color:burlywood;
+    background-color:rgb(207, 241, 126);
     font-weight: bold;
-    color: rgb(32, 32, 32);
-}
-.signup-form, .login-form{
+    color: rgb(46, 15, 223);
     position: absolute;
     left: 50%;
     top: 50%;
@@ -93,12 +94,13 @@ input[type="text"], input[type="password"], input[type="email"]{
 }
 
 .form-btn{
-    width: 80px;
-    height: 35px;
     margin-top: 2%;
     border-radius: 10px;
     outline: none;
     text-decoration: none;
+    font-size: 1.2rem; 
+    font-weight: bold;
+    color: rgb(46, 15, 223);
 }
 .form-btn:hover{
     transform: scale(1.1);
@@ -110,14 +112,116 @@ input[type="text"], input[type="password"], input[type="email"]{
 }
 .form-title{
     margin-left: 5%;
-    font-size: 2vw;
+    font-size: 1.5rem;
 }
 .close-btn{
     position: absolute;
     right: 1%;
     top: 1%;
-    font-size: 2vw;
+    font-size: 1.5rem;
 }
 .close-btn:hover{
     cursor: pointer;
+}
+.logo{
+    position: absolute;
+    width: 125px;
+    height: 125px;
+    left: 30px;
+    top: 20px;
+}
+.logo2{
+    position: absolute;
+    width: 125px;
+    height: 125px;
+    right: 5vw;
+    top: 20px;
+}
+
+@media screen and (max-width:1024px){
+    .title{
+        left: 20%;
+        top: 10%;
+        width: 30vw;
+        position: relative;
+    }
+    .signup-form, .login-form{
+        width: 75vw;
+        font-size: 2rem;
+        margin-top: 15%;
+    }
+    .form-btn{
+        font-size: 2rem;
+    }
+    .login-form{
+        height: 25vh;
+    }
+    .logo{
+        display: none;
+    }
+    .logo2{
+        right: 15vw;
+    }
+    .btn{
+        margin-top: 50%;
+    }
+}
+
+@media screen and (max-width:768px){
+    .btn{
+        margin-top: 50%;
+    }
+    .signup-form, .login-form{ 
+        height: auto;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .title{
+        font-size: 0.5rem;
+    }
+    .btn{
+        width: 30vw;
+        height: 10vh;
+        font-size: 1.5rem;
+        margin-top: 100%;
+    }
+    .signup-form, .login-form, .form-btn{
+        font-size: 1.5rem;
+    }
+}
+@media  screen and (max-width:414px) {
+    .logo-img{
+        width: 20vw;
+        height: 20vh;
+    }
+    .logo2{
+        right: 0;
+    }
+    .btn{
+        width: 30vw;
+        height: 8vh;
+        font-size: 1.5rem;
+        margin-top: 150%;
+    }
+    .signup-form, .login-form, .form-btn{
+        font-size: 1.5rem;
+    }
+    
+}
+@media  screen and (max-width:360px) {
+    .logo-img{
+        width: 20vw;
+        height: 20vh;
+    }
+    .btn{
+        font-size: 1rem;
+        margin-top: 100%;
+        margin-left: 27%;
+    }
+    .signup-form, .login-form, .form-btn{
+        font-size: 1rem;
+    }
+
+    
 }
