@@ -1,0 +1,4 @@
+This is my very first full-stack project which involves a basic front-end and a login system which contains a database.
+I've used node.js and mongodb. The reason why I picked MongoDB for this project is because mongodb saves unstructure data json format. 
+
+There are some features that "could" have/ be implemented if I have extra time and that would work better with mongodb.
