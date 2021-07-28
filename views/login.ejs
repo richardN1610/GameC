@@ -8,6 +8,7 @@
     <script src="loginform.js" defer></script>
     <title>Home Page</title>
 </head>
+
 <body>
     <div class="logo">
         <img src="/logo.png" class="logo-img">
@@ -16,14 +17,14 @@
         <img src="/logo.png" class="logo-img">
     </div>
     <div class="title">
-         <h1>Welcome To GameC</h1>
+        <h1>Welcome To GameC</h1>
     </div>
 
     <div class="login-form" id="l-form">
         <div class="close-btn loginform-btn">
             <span class="">&#10006</span>
         </div>
-        <form action="/login" method="POST">
+        <form id='login-form'>
             <div class="form-title">Log In</div>
             <div class="form-text">
                 <span>Username</span>
@@ -42,5 +43,35 @@
             </div>
         </form>
     </div>
+
+    <script>
+        const form = document.getElementById('login-form')
+        form.addEventListener('submit', loginCheck)
+
+        async function loginCheck(event) {
+            event.preventDefault()
+            const username = document.getElementById('name').value
+            const password = document.getElementById('password').value
+
+            //http request to check user credentials
+            const result = await fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username,
+                    password
+                })
+            }).then((res) => res.json())
+
+            if (result.status === 'error') {
+                alert(result.error);
+            } else if(result.status === 'ok') {
+                alert('Loggin In')
+            }
+        }
+    </script>
 </body>
+
 </html>
