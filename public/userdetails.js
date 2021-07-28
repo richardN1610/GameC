@@ -16,7 +16,8 @@ const userSchema = new schema({
         type: String,
         require: true
     },
-});
+    }
+);
 
 //creating the model
 const UserDetail = mongoose.model('User-Detail', userSchema);

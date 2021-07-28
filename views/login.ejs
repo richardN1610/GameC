@@ -24,7 +24,7 @@
         <div class="close-btn loginform-btn">
             <span class="">&#10006</span>
         </div>
-        <form id='login-form'>
+        <form action="/login" method="POST" id='login-form'>
             <div class="form-title">Log In</div>
             <div class="form-text">
                 <span>Username</span>
@@ -68,7 +68,7 @@
             if (result.status === 'error') {
                 alert(result.error);
             } else if(result.status === 'ok') {
-                alert('Loggin In')
+                alert('Welcome To GameC')
             }
         }
     </script>

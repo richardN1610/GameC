@@ -1,19 +1,17 @@
 const express = require('express')
-const app = express()
 const mongoose = require('mongoose');
 const UserDetail = require('./public/userdetails'); //importing module from userdetails js
 const bcrypt = require('bcrypt');
 const fs = require('fs');
 const bodyParser = require('body-parser');
-
-mongoose.set('useCreateIndex', true);
+const path = require('path');
 const jwt = require('jsonwebtoken');
 const { Socket } = require('net');
 const JWT_SECRET = 'asdasd23423874234jerfjk#$@#$424sfa4j';
 //connect to mongo  db
 const dbURL = 'mongodb+srv://admin:admin@cluster0.efglu.mongodb.net/GameC-DB?retryWrites=true&w=majority'
 
-
+mongoose.set('useCreateIndex', true);
 mongoose.connect(dbURL,{useNewUrlParser: true, useUnifiedTopology: true}).then((result) =>{
     console.log("Connected to the database");
     app.listen(3000);
@@ -21,11 +19,12 @@ mongoose.connect(dbURL,{useNewUrlParser: true, useUnifiedTopology: true}).then((
     console.log(err);
 })
 
+const app = express()
+app.use('/', express.static(path.join(__dirname, 'views')))
 app.set('view-engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static('public'));
 app.use(bodyParser.json());
-
 app.get('/', (req, res) => {
     res.render('home.ejs')
 })
@@ -73,46 +72,20 @@ app.post('/', async (req, res) => {
 })
 
 app.post('/login', async (req,res) =>{
-    const username = req.body.name;
+    const username = req.body.username;
     const password = req.body.password;
     const user = await UserDetail.findOne({username}).lean();
-    console.log(password)
-    console.log(user);
-
+    console.log(username)
     if(!user){
 		return res.json({ status: 'error', error: 'Invalid Credentials.' })
     }
+
     if(await bcrypt.compare(password, user.password)){
         const token = jwt.sign({
             name: user.name
         }, JWT_SECRET)
-        res.redirect('/index');
+        //res.redirect was causing the issue in here.
         return res.json({ status: 'ok', data: token })
     }
+    res.json({ status: 'error', error: 'Invalid username/password' })
 })
-
-
-// app.post('/login', async (req, res) => {
-//     const username = req.body.name;
-//     const password = req.body.password;
-//     const user = await UserDetail.findOne({username}).lean();
-//     console.log(password);
-// 	if (!user) {
-// 		return res.json({ status: 'error', error: 'Invalid Credentials.' })
-// 	}
-
-// 	if (await bcrypt.compare(password, user.password)) {
-// 		// the username, password combination is successful
-
-// 		const token = jwt.sign(
-// 			{
-// 				username: user.name
-// 			},
-// 			JWT_SECRET
-// 		)
-//         res.redirect('/index');
-//         return res.json({ status: 'ok', data: token })
-// 	}
-// 	res.json({ status: 'error', error: 'Invalid username/password' })
-// })
-
