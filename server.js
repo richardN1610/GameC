@@ -56,26 +56,28 @@ app.post('/', async (req, res) => {
     const password = await bcrypt.hash(plainPW,10);    
 
     console.log(name);
-    try{    //try adding user to the database
-        const user = await UserDetail.create({
-            username: name,
-            password: password,
-            email: email
-        })
-    }catch(e){  //if catch error...
-        if(e.code === 11000){
-            return res.redirect('/')
-        }
-        throw e;
-    }
-    res.redirect('/');
+	try {
+		const response = await UserDetail.create({
+			username: name,
+			password : password,
+            email : email
+		})
+		console.log('User created successfully: ', response)
+	} catch (error) {
+		if (error.code === 11000) {
+			// duplicate key
+			return res.json({ status: 'error', error: 'Username already in use' })
+		}
+		throw error
+	}
+    res.json({status: 'ok'})
+    
 })
 
 app.post('/login', async (req,res) =>{
     const username = req.body.username;
     const password = req.body.password;
     const user = await UserDetail.findOne({username}).lean();
-    console.log(username)
     if(!user){
 		return res.json({ status: 'error', error: 'Invalid Credentials.' })
     }
@@ -85,7 +87,8 @@ app.post('/login', async (req,res) =>{
             name: user.name
         }, JWT_SECRET)
         //res.redirect was causing the issue in here.
-        return res.json({ status: 'ok', data: token })
+        return res.json({ status: 'ok', data: token})
     }
-    res.json({ status: 'error', error: 'Invalid username/password' })
+
+    res.json({ status: 'error', error: 'Invalid username/password'})
 })

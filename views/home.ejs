@@ -27,13 +27,13 @@
             <a href="/login" class="btn login-btn">Log In</button></a>
         </div>
     </div>
-        <!--Will change the form design to make it better looking-->
+    
     <div class="signup-form" >
         <span class="form-title">Sign Up</span>
         <div class="close-btn">
             <span class="">&#10006</span>
         </div>
-        <form action="/" method="POST" id="s-form">
+        <form method="POST" action="/" id="s-form">
             <div class="form-text">
                 <span>Username</span>
             </div>
@@ -57,5 +57,34 @@
             </div>
         </form>
     </div>
+
+    <script>
+        const form = document.getElementById('s-form')
+        form.addEventListener('submit', checkForm)
+
+        async function checkForm(event) {
+            event.preventDefault()
+            const name = document.getElementById('name').value
+            const password = document.getElementById('password').value
+
+            const result = await fetch('/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name,
+                    password
+                })
+            }).then((res) => res.json())
+
+            if (result.status === 'ok') {
+                alert('Your account has been created')
+                window.location.href = "/login"
+            } else {
+                alert(result.error)
+            }
+        }
+    </script>
 </body>
 </html>

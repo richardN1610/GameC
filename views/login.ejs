@@ -45,6 +45,7 @@
     </div>
 
     <script>
+        const nextPage = "/index";
         const form = document.getElementById('login-form')
         form.addEventListener('submit', loginCheck)
 
@@ -69,6 +70,9 @@
                 alert(result.error);
             } else if(result.status === 'ok') {
                 alert('Welcome To GameC')
+                //instead of using res.redirect from the server. I used window.location.href to work around this problem.
+                //res.redirect was causing issue in the authentication function.
+                window.location.href = nextPage;
             }
         }
     </script>
